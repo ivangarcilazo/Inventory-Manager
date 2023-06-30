@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import React from 'react'
 import { useEffect, useState } from 'react'
 import addButton from '../../../assets/AddButton.svg'
 import useFetch from '../../../hooks/useFetch'
@@ -28,7 +29,7 @@ export default function Inventory({stateAuth}){
                     (
                         <>
                         <h2 className="text-2xl m-0 p-0">Company inventory of<br /> <span className='font-bold'>{data.name}</span> </h2>
-                        {stateAuth.statusAdmin&&<ButtonInventory token={stateAuth.token} newUpdate={newUpdate} setNewUpdate={setNewUpdate} method={'POST'} data={data} imgSource={addButton} width={30} title={`Add new product of ${data.name}`} />}
+                        {stateAuth.statusAdmin&&<ButtonInventory dataTestID={'buttonAddProduct'} token={stateAuth.token} newUpdate={newUpdate} setNewUpdate={setNewUpdate} method={'POST'} data={data} imgSource={addButton} width={30} title={`Add new product of ${data.name}`} />}
                         </>
                     )
                 }

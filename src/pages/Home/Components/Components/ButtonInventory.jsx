@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
+import React from "react"
 import { useRef, useState } from "react"
 import Modal from "../../../../Components/Modal/Modal"
 
-export default function ButtonInventory({imgSource, width, title, data, method, setNewUpdate, newUpdate, token}){
+export default function ButtonInventory({imgSource, width, title, data, method, setNewUpdate, newUpdate, token, dataTestID}){
     const [ isOpened, setIsOpened ] = useState(false)
     const [ error, setError ] = useState(false)
     const [ statusRequest, setStatusRequest ] = useState(false)
@@ -100,7 +101,7 @@ export default function ButtonInventory({imgSource, width, title, data, method, 
     
     return(
         <>
-            <button onClick={()=>setIsOpened(true)}>
+            <button onClick={()=>setIsOpened(true)} data-testid={dataTestID}>
                 <img src={imgSource} alt="" width={width} />
             </button>
             <Modal error={error} setError={setError} statusRequest={statusRequest} onSubmit={handlerSubmit} actionSubmit={'Add product'} isOpened={isOpened} title={title} setIsOpened={setIsOpened}>

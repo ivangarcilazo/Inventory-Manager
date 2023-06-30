@@ -1,5 +1,5 @@
 import 'animate.css'
-
+import React from 'react'
 import firstImage from '../../assets/FirstCarrousel.svg'
 import secondImage from '../../assets/SecondCarrousel.svg'
 import thirdImage from '../../assets/ThirdCarrousel.svg'
