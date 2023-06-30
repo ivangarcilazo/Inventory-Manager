@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
+import React from 'react'
 import useFetch from '../../../hooks/useFetch'
-import EditButton from './Components/EditButton'
 import DeleteButton from './Components/DeleteButton'
+import EditImage from '../../../assets/editButton.svg'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import ActionCompanies from './Components/ActionCompanies'
@@ -27,7 +28,7 @@ export default function CompaniesList({stateAuth}){
             <div className="w-full rounded-t-xl h-1/6 flex items-center justify-around" style={{backgroundColor:'#F38704'}}>
                 <span className="text-xl">Companies</span>
                 {
-                    stateAuth.statusAdmin&&<ActionCompanies token={stateAuth.token} newUpdate={newUpdate} setNewUpdate={setNewUpdate} title={'Companies'} imageSource={AddButton} method={'POST'} modalTitle={'Add new company'} path={'register'} />
+                    stateAuth.statusAdmin&&<ActionCompanies dataTestID={'buttonAddNewCompany'} token={stateAuth.token} newUpdate={newUpdate} setNewUpdate={setNewUpdate} title={'Companies'} imageSource={AddButton} method={'POST'} modalTitle={'Add new company'} path={'register'} />
                 }
             </div>
             <div className="h-5/6 border- rounded-b-xl text-slate-600 border overflow-y-scroll bg-white">
@@ -70,8 +71,9 @@ export default function CompaniesList({stateAuth}){
                                     {
                                     stateAuth.statusAdmin&&
                                     <td className="py-2 px-1 border text-sm">
-                                        <EditButton token={stateAuth.token} dataCompany={data} path={'/modify'} setNewUpdate={setNewUpdate} newUpdate={newUpdate}/>
-                                        <DeleteButton redirect={true} uri={'https://imagineapp-prueba.netlify.app/.netlify/functions/app/company'} token={stateAuth.token} width={30} setNewUpdate={setNewUpdate} newUpdate={newUpdate}  data={data} />
+                                        {/* Edit company button */}
+                                        <ActionCompanies  dataTestID={'buttonEditExistingCompany'} newUpdate={newUpdate} setNewUpdate={setNewUpdate} path={'/modify'} token={stateAuth.token} method={'PUT'} data={data} imageSource={EditImage} modalTitle={`Edit company of ${data.name}`} />
+                                        <DeleteButton dataTestID={'deleteButtonCompany'} redirect={true} uri={'https://imagineapp-prueba.netlify.app/.netlify/functions/app/company'} token={stateAuth.token} width={30} setNewUpdate={setNewUpdate} newUpdate={newUpdate}  data={data} />
                                     </td>
                                     }
                                     </tr>

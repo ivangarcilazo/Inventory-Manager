@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
+import React from "react"
 import { useState, useRef } from "react"
 import Modal from "../../../../Components/Modal/Modal"
 import { generalCheckAddNewCompany } from "./utils/checkAddNewCompany"
 import FormCompanies from "./FormCompanies"
 
 //It has the functionality of check data and errors 
-export default function ActionCompanies({data, imageSource, method, modalTitle, path, setNewUpdate, newUpdate, token}){
+export default function ActionCompanies({data, imageSource, method, modalTitle, path, setNewUpdate, newUpdate, token, dataTestID}){
 
     const [ statusRequest, setStatusRequest ] = useState(false)
     const [ error, setError ] = useState(false)
@@ -85,7 +86,7 @@ export default function ActionCompanies({data, imageSource, method, modalTitle, 
 
     return(
         <>
-            <button onClick={()=>setOpen(true)}>
+            <button onClick={()=>setOpen(true)}  data-testid={dataTestID} >
                 <img src={imageSource} className="w-6" alt="" />
             </button>
             {open&&(
